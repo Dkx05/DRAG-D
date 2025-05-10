@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAG-D Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .modern-header {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233a7bd5" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat center bottom/100% auto, linear-gradient(to right, #3a7bd5, #00d2ff);
+            background-color: #3a7bd5;
+        }
+    </style>
+</head>
+<body>
+    <header class="modern-header">
+        <div class="container">
+            <h1>DRAG-D</h1>
+            <p>Craft your resume - click at a time!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="builder-container modern-builder">
+            <!-- Personal Information Section (shown first) -->
+            <div class="form-section active" id="personal-section">
+                <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                <form id="personal-form" class="modern-form">
+                    <div class="photo-upload-container">
+                        <div class="photo-preview" id="photo-preview">
+                            <div class="empty-photo"><i class="fas fa-user"></i></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="upload-btn">Choose Profile Photo</label>
+                            <input type="file" id="photo" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full Name*</label>
+                            <input type="text" id="full-name" placeholder="e.g. Aiswarya Bhatt" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profession">Profession*</label>
+                            <input type="text" id="profession" placeholder="e.g. AI/ML Developer" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" placeholder="e.g. your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" placeholder="e.g. +91 1234567890">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" placeholder="e.g. Edapally, kochi">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="summary">Professional Summary*</label>
+                        <textarea id="summary" rows="5" placeholder="I am passionate about real-world design and eager to use technology for the benefit of humanity..." required></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="next-btn modern-btn" id="personal-next">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Work Experience Section (hidden initially) -->
+            <div class="form-section" id="experience-section">
+                <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                <div id="experience-entries">
+                    <div class="experience-entry">
+                        <form class="experience-form">
+                            <div class="form-group">
+                                <label>Job Title*</label>
+                                <input type="text" class="job-title" placeholder="e.g. AI Developer" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Company*</label>
+                                <input type="text" class="company" placeholder="e.g. Tech Solutions Inc." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Duration*</label>
+                                <input type="text" class="duration" placeholder="e.g. 2023 - Present" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description*</label>
+                                <textarea class="description" rows="4" placeholder="Describe your responsibilities and achievements..." required></textarea>
+                            </div>
+                            <button type="button" class="remove-btn">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <button type="button" id="add-experience" class="add-btn modern-btn"><i class="fas fa-plus"></i> Add Another Experience</button>
+                <div class="form-actions">
+                    <button type="button" class="prev-btn modern-btn" id="experience-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="next-btn modern-btn" id="experience-next">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Education Section (hidden initially) -->
+            <div class="form-section" id="education-section">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div id="education-entries">
+                    <div class="education-entry">
+                        <form class="education-form">
+                            <div class="form-group">
+                                <label>Degree*</label>
+                                <input type="text" class="degree" placeholder="e.g. Bachelor of Technology" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Institution*</label>
+                                <input type="text" class="institution" placeholder="e.g. College of Engineering Trivandrum" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Year*</label>
+                                <input type="text" class="year" placeholder="e.g. 2023 - Present" required>
+                            </div>
+                            <div class="form-group">
+                                <label>GPA/Score (optional)</label>
+                                <input type="text" class="gpa" placeholder="e.g. 3.8 GPA">
+                            </div>
+                            <button type="button" class="remove-btn">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <button type="button" id="add-education" class="add-btn modern-btn"><i class="fas fa-plus"></i> Add Another Education</button>
+                <div class="form-actions">
+                    <button type="button" class="prev-btn modern-btn" id="education-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="next-btn modern-btn" id="education-next">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Skills Section (hidden initially) -->
+            <div class="form-section" id="skills-section">
+                <h2><i class="fas fa-code"></i> Skills</h2>
+                <div id="skills-container">
+                    <div class="form-group">
+                        <label for="skills-input">Add Skills (separate with commas)</label>
+                        <input type="text" id="skills-input" placeholder="e.g. Python, Machine Learning, Flask, Git">
+                        <button type="button" id="add-skills" class="add-btn modern-btn"><i class="fas fa-plus"></i> Add Skills</button>
+                    </div>
+                    <div id="skills-list">
+                        <!-- Skills will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="prev-btn modern-btn" id="skills-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="next-btn modern-btn" id="skills-next">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Achievements Section (hidden initially) -->
+            <div class="form-section" id="achievements-section">
+                <h2><i class="fas fa-trophy"></i> Key Achievements</h2>
+                <div id="achievements-entries">
+                    <div class="achievement-entry">
+                        <form class="achievement-form">
+                            <div class="form-group">
+                                <label>Achievement Title*</label>
+                                <input type="text" class="achievement-title" placeholder="e.g. Best Cookie Developer Award" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description*</label>
+                                <textarea class="achievement-description" rows="3" placeholder="Describe your achievement and its impact..." required></textarea>
+                            </div>
+                            <button type="button" class="remove-btn">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <button type="button" id="add-achievement" class="add-btn modern-btn">
+                    <i class="fas fa-plus"></i> Add Another Achievement
+                </button>
+                <div class="form-actions">
+                    <button type="button" class="prev-btn modern-btn" id="achievements-prev">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" class="next-btn modern-btn" id="achievements-next">
+                        Preview Resume <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Preview Section (hidden initially) -->
+            <div class="form-section" id="preview-section">
+                <h2><i class="fas fa-eye"></i> Resume Preview</h2>
+                <div class="resume-preview modern-resume" id="resume-preview">
+                    <!-- Resume content will be generated here -->
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="prev-btn modern-btn" id="preview-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+                    <button type="button" id="download-pdf" class="download-btn modern-btn"><i class="fas fa-download"></i> Download PDF</button>
+                    <button type="button" id="print-resume" class="print-btn modern-btn"><i class="fas fa-print"></i> Print Resume</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="modern-footer">
+        <div class="container">
+            <p>&copy; 2023 DRAG-D Resume Builder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
